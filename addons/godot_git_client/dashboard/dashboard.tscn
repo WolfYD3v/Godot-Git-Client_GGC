@@ -33,10 +33,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2957.0
-offset_top = -2824.9998
-offset_right = -1805.0
-offset_bottom = -2176.9998
+offset_left = -2757.0
+offset_top = -2846.0
+offset_right = -1605.0
+offset_bottom = -2198.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 5)
@@ -112,7 +112,8 @@ theme_override_constants/v_separation = 10
 [node name="ErrorsButton" type="Button" parent="MarginContainer/GridContainer" unique_id=996866575]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-text = "E"
+theme_override_font_sizes/font_size = 25
+text = "⚠"
 
 [node name="Panel" type="Panel" parent="MarginContainer/GridContainer/ErrorsButton" unique_id=1486956100]
 layout_mode = 1
@@ -138,19 +139,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 10
-text = "1"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CommitingToolButton" type="Button" parent="MarginContainer/GridContainer" unique_id=934597841]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-text = "CT"
+theme_override_font_sizes/font_size = 25
+text = "💿"
 
 [node name="RemoteToolButton" type="Button" parent="MarginContainer/GridContainer" unique_id=1116613190]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-text = "RT"
+theme_override_font_sizes/font_size = 25
+text = "⤮"
 
 [node name="GGC_LogsMenu" parent="." unique_id=967019917 instance=ExtResource("4_0y6gp")]
 layout_mode = 1
