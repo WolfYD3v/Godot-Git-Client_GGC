@@ -23,4 +23,4 @@ func trigger_dashboard_errors_count_update() -> void:
 	for _error: GGC_BaseError in errors.get_children():
 		if _error.visible: active_errors_count += 1
 	
-	dashboard.errors_count_label.text = str(active_errors_count)
+	if dashboard: dashboard.errors_count_label.text = str(active_errors_count)

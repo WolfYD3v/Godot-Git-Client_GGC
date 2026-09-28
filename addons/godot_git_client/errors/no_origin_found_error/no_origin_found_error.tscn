@@ -6,18 +6,18 @@
 
 [node name="GGC_NoOriginFoundError" unique_id=1174116289 instance=ExtResource("1_2bmd7")]
 visible = true
-anchors_preset = 10
 anchor_bottom = 0.0
 offset_bottom = 62.0
 grow_vertical = 1
 script = ExtResource("2_sd3qg")
+text = "No remote has been found yet, please add a remote to be able to push and pull with the Remote Tool [ ⤮ ]"
 
 [node name="ErrorTextLabel" parent="." index="0" unique_id=1539188425]
-text = "No or"
+text = "No remote has been found yet, please add a remote to be able to push and pull with the Remote Tool [ ⤮ ]"
 
 [node name="AddOriginButton" type="Button" parent="Actions" parent_id_path=PackedInt32Array(28602244) index="0" unique_id=885198728]
 layout_mode = 2
-text = "Add origin"
+text = "Look for remote"
 
 [node name="GGC_ExecuteShell" parent="." index="2" unique_id=1546650804 instance=ExtResource("3_pqaoq")]
 
