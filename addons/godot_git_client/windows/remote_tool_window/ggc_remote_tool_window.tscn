@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://jw0ty5ajqvo6"]
+
+[ext_resource type="PackedScene" uid="uid://cqshaofwx2i06" path="res://addons/godot_git_client/windows/base_window/base_window.tscn" id="1_e8ya5"]
+[ext_resource type="Script" uid="uid://d0qcw1gn8tb46" path="res://addons/godot_git_client/windows/remote_tool_window/ggc_remote_tool_window.gd" id="2_ebh22"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_eu2ei"]
+
+[node name="GGC_RemoteToolWindow" unique_id=1170723533 instance=ExtResource("1_e8ya5")]
+custom_minimum_size = Vector2(853.333, 518.4)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -426.6665
+offset_top = -259.2
+offset_right = 426.6665
+offset_bottom = 259.2
+script = ExtResource("2_ebh22")
+
+[node name="WindowNameLabel" parent="VBoxContainer/TopBar/MarginContainer/NODES" parent_id_path=PackedInt32Array(103460465) index="0" unique_id=981018650]
+text = "REMOTE TOOL"
+
+[node name="NODES" type="VBoxContainer" parent="VBoxContainer/Interface/MarginContainer" parent_id_path=PackedInt32Array(1145247039) index="0" unique_id=1199848053]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LabelsContainer" type="HBoxContainer" parent="VBoxContainer/Interface/MarginContainer/NODES" index="0" unique_id=1394178283]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RemotesFoundLabel" type="Label" parent="VBoxContainer/Interface/MarginContainer/NODES/LabelsContainer" index="0" unique_id=1909239029]
+layout_mode = 2
+text = "Remote(s) found:"
+
+[node name="RemotesCountLabel" type="Label" parent="VBoxContainer/Interface/MarginContainer/NODES/LabelsContainer" index="1" unique_id=1666900025]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="ActionsContainer" type="HBoxContainer" parent="VBoxContainer/Interface/MarginContainer/NODES" index="1" unique_id=160458343]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NewRemoteButton" type="Button" parent="VBoxContainer/Interface/MarginContainer/NODES/ActionsContainer" index="0" unique_id=140587195]
+layout_mode = 2
+text = "New"
+
+[node name="RemotesContainer" type="Panel" parent="VBoxContainer/Interface/MarginContainer/NODES" index="2" unique_id=1203691611]
+modulate = Color(0.7529412, 0.7529412, 0.7529412, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Interface/MarginContainer/NODES/RemotesContainer" index="0" unique_id=1944546474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Interface/MarginContainer/NODES/RemotesContainer/MarginContainer" index="0" unique_id=1899043488]
+layout_mode = 2
+
+[node name="RemotesList" type="VBoxContainer" parent="VBoxContainer/Interface/MarginContainer/NODES/RemotesContainer/MarginContainer/ScrollContainer" index="0" unique_id=467078437]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="GGC_ExecuteShell" parent="." index="2" unique_id=1546650804 instance=ExtResource("3_eu2ei")]
+
+[connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/NODES/ActionsContainer/NewRemoteButton" to="." method="_on_new_remote_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

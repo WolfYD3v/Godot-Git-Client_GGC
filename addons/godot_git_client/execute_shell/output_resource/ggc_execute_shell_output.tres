@@ -1,0 +1,6 @@
+[gd_resource type="Resource" format=3 uid="uid://cehrs5o1gmvgs"]
+
+[ext_resource type="Script" uid="uid://cqifsrdmposfd" path="res://addons/godot_git_client/execute_shell/output_resource/ggc_execute_shell_output.gd" id="1_ghbdn"]
+
+[resource]
+script = ExtResource("1_ghbdn")

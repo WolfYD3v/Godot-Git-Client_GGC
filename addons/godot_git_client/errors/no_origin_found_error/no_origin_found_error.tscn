@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://5erajy554lmk"]
+
+[ext_resource type="PackedScene" uid="uid://04unyd8dp0ed" path="res://addons/godot_git_client/errors/base_error/base_error.tscn" id="1_2bmd7"]
+[ext_resource type="Script" uid="uid://cx7foh88vo5kq" path="res://addons/godot_git_client/errors/no_origin_found_error/no_origin_found_error.gd" id="2_sd3qg"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_pqaoq"]
+
+[node name="GGC_NoOriginFoundError" unique_id=1174116289 instance=ExtResource("1_2bmd7")]
+visible = true
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 62.0
+grow_vertical = 1
+script = ExtResource("2_sd3qg")
+
+[node name="ErrorTextLabel" parent="." index="0" unique_id=1539188425]
+text = "No or"
+
+[node name="AddOriginButton" type="Button" parent="Actions" parent_id_path=PackedInt32Array(28602244) index="0" unique_id=885198728]
+layout_mode = 2
+text = "Add origin"
+
+[node name="GGC_ExecuteShell" parent="." index="2" unique_id=1546650804 instance=ExtResource("3_pqaoq")]
+
+[connection signal="pressed" from="Actions/AddOriginButton" to="." method="_on_add_origin_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

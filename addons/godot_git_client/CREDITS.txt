@@ -1,0 +1,6 @@
+Interface Theme: Godot Retro Theme 'Space Worm' [0.2 version]
+[ https://itch.io/queue/c/5668854/godot-themes?game_id=3317040&password= ]
+MODIFIED A BIT BY WolfY_D3v
+
+Background Image
+[ https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.Vf9zxCq9Q0jDUlUTN5yGBwHaEo%3Fpid%3DApi&f=1&ipt=a309c55a02297773e9df60f540c1148c2c8a7b0d97060e507de254ef0c30a830&ipo=images ]

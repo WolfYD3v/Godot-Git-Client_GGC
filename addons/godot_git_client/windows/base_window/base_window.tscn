@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://cqshaofwx2i06"]
+
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_fdd7w"]
+[ext_resource type="Script" uid="uid://cujblujuhiutk" path="res://addons/godot_git_client/windows/base_window/base_window.gd" id="2_4kj55"]
+
+[sub_resource type="Animation" id="Animation_4kj55"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_klm2x"]
+resource_name = "close"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.001, 0.001)]
+}
+
+[sub_resource type="Animation" id="Animation_yviie"]
+resource_name = "popup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.001, 0.001), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klm2x"]
+_data = {
+&"RESET": SubResource("Animation_4kj55"),
+&"close": SubResource("Animation_klm2x"),
+&"popup": SubResource("Animation_yviie")
+}
+
+[node name="GGC_BaseWindow" type="Control" unique_id=1170723533]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("1_fdd7w")
+script = ExtResource("2_4kj55")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=265586789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -3
+
+[node name="TopBar" type="Control" parent="VBoxContainer" unique_id=1272426311]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="VBoxContainer/TopBar" unique_id=1276506545]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopBar" unique_id=1944457756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="NODES" type="HBoxContainer" parent="VBoxContainer/TopBar/MarginContainer" unique_id=103460465]
+layout_mode = 2
+
+[node name="WindowNameLabel" type="Label" parent="VBoxContainer/TopBar/MarginContainer/NODES" unique_id=981018650]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "WINDOW NAME"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TopBar/MarginContainer/NODES" unique_id=479741245]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 11
+text = "X"
+
+[node name="Interface" type="Control" parent="VBoxContainer" unique_id=1373343087]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="Panel" parent="VBoxContainer/Interface" unique_id=1336702565]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Interface" unique_id=1145247039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=672400284]
+libraries/ = SubResource("AnimationLibrary_klm2x")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/TopBar/MarginContainer/NODES/CloseButton" to="." method="close"]

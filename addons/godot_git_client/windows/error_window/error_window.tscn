@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c2x6vtt8dfrkj"]
+
+[ext_resource type="PackedScene" uid="uid://cqshaofwx2i06" path="res://addons/godot_git_client/windows/base_window/base_window.tscn" id="1_m31oa"]
+[ext_resource type="Script" uid="uid://lrjb1t747bqq" path="res://addons/godot_git_client/windows/error_window/error_window.gd" id="2_qsw48"]
+[ext_resource type="PackedScene" uid="uid://cek5bwytj5gly" path="res://addons/godot_git_client/errors/git_not_found_error/git_not_found_error.tscn" id="3_n4tfl"]
+[ext_resource type="PackedScene" uid="uid://ppn6u4r4yyuv" path="res://addons/godot_git_client/errors/git_not_init/git_not_init_error.tscn" id="4_lc8pt"]
+
+[node name="GGC_ErrorWindow" unique_id=1170723533 instance=ExtResource("1_m31oa")]
+custom_minimum_size = Vector2(768, 432)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -216.0
+offset_right = 384.0
+offset_bottom = 216.0
+script = ExtResource("2_qsw48")
+
+[node name="WindowNameLabel" parent="VBoxContainer/TopBar/MarginContainer/NODES" parent_id_path=PackedInt32Array(103460465) index="0" unique_id=981018650]
+text = "Errors"
+
+[node name="ErrorsScrollContainer" type="ScrollContainer" parent="VBoxContainer/Interface/MarginContainer" parent_id_path=PackedInt32Array(1145247039) index="0" unique_id=1650391140]
+layout_mode = 2
+
+[node name="Errors" type="VBoxContainer" parent="VBoxContainer/Interface/MarginContainer/ErrorsScrollContainer" index="0" unique_id=1646331252]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="GitNotFoundError" parent="VBoxContainer/Interface/MarginContainer/ErrorsScrollContainer/Errors" index="0" unique_id=1539962584 instance=ExtResource("3_n4tfl")]
+layout_mode = 2
+
+[node name="GitNotInitError" parent="VBoxContainer/Interface/MarginContainer/ErrorsScrollContainer/Errors" index="1" unique_id=2126099028 instance=ExtResource("4_lc8pt")]
+visible = false
+layout_mode = 2
