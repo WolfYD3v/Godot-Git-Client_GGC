@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cek5bwytj5gly"]
+
+[ext_resource type="PackedScene" uid="uid://04unyd8dp0ed" path="res://addons/godot_git_client/errors/base_error/base_error.tscn" id="1_2dldl"]
+[ext_resource type="Script" uid="uid://ruif0omc0oco" path="res://addons/godot_git_client/errors/git_not_found_error/git_not_found_error.gd" id="2_6kw52"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_t86j4"]
+
+[node name="GitNotFoundError" unique_id=1539962584 instance=ExtResource("1_2dldl")]
+script = ExtResource("2_6kw52")
+text = "Git not found on your system ! GGC cannot work without Git installed locally"
+
+[node name="ErrorTextLabel" parent="." index="0" unique_id=1539188425]
+text = "Git not found on your system ! GGC cannot work without Git installed locally"
+
+[node name="InstallGitButton" type="Button" parent="Actions" parent_id_path=PackedInt32Array(28602244) index="0" unique_id=1183447944]
+layout_mode = 2
+text = "install Git"
+
+[node name="LookForGitButton" type="Button" parent="Actions" parent_id_path=PackedInt32Array(28602244) index="1" unique_id=1588459435]
+layout_mode = 2
+text = "look for Git"
+
+[node name="GGC_ExecuteShell" parent="." index="2" unique_id=1546650804 instance=ExtResource("3_t86j4")]
+
+[connection signal="pressed" from="Actions/InstallGitButton" to="." method="_on_install_git_button_pressed"]
+[connection signal="pressed" from="Actions/LookForGitButton" to="." method="_on_look_for_git_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

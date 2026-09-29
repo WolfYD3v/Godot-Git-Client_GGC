@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://04unyd8dp0ed"]
+
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_phqic"]
+[ext_resource type="Script" uid="uid://bm3wcksbetwpq" path="res://addons/godot_git_client/errors/base_error/base_error.gd" id="2_phqic"]
+
+[node name="BaseError" type="VBoxContainer" unique_id=1174116289]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.07700001
+offset_bottom = 0.10399628
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_phqic")
+script = ExtResource("2_phqic")
+force_show = null
+
+[node name="ErrorTextLabel" type="Label" parent="." unique_id=1539188425]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TEXT"
+autowrap_mode = 3
+
+[node name="Actions" type="HBoxContainer" parent="." unique_id=28602244]
+layout_mode = 2

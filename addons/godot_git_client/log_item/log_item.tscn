@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://wn5ohr3ugxuq"]
+
+[ext_resource type="Script" uid="uid://div4jpvg11r6u" path="res://addons/godot_git_client/log_item/log_item.gd" id="1_sge3v"]
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_yw6py"]
+
+[node name="GGC_LogItem" type="Label" unique_id=548398525]
+custom_minimum_size = Vector2(1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yw6py")
+autowrap_mode = 3
+script = ExtResource("1_sge3v")

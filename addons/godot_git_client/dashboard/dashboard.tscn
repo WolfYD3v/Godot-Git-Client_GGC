@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://dh7ohcqcrefwv"]
+
+[ext_resource type="Script" uid="uid://dnwfxxhw851if" path="res://addons/godot_git_client/dashboard/dashboard.gd" id="1_6icy7"]
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_hcqs4"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="2_k2aub"]
+[ext_resource type="Texture2D" uid="uid://b6uknd04pf20j" path="res://addons/godot_git_client/assets/background.jpg" id="3_0y6gp"]
+[ext_resource type="PackedScene" uid="uid://bsttrd7a7is5o" path="res://addons/godot_git_client/logs_menu/logs_menu.tscn" id="4_0y6gp"]
+[ext_resource type="PackedScene" uid="uid://c2x6vtt8dfrkj" path="res://addons/godot_git_client/windows/error_window/error_window.tscn" id="5_ktsl0"]
+[ext_resource type="PackedScene" uid="uid://c82xe4hu02l2e" path="res://addons/godot_git_client/windows/commiting_tool_window/ggc_commiting_tool_window.tscn" id="6_8rbxu"]
+[ext_resource type="PackedScene" uid="uid://jw0ty5ajqvo6" path="res://addons/godot_git_client/windows/remote_tool_window/ggc_remote_tool_window.tscn" id="7_1netg"]
+
+[node name="GGC_Dashboard" type="Control" unique_id=1792440517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hcqs4")
+script = ExtResource("1_6icy7")
+
+[node name="Background" type="Control" parent="." unique_id=1057669319]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Background" unique_id=784594674]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2757.0
+offset_top = -2846.0
+offset_right = -1605.0
+offset_bottom = -2198.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 5)
+texture = ExtResource("3_0y6gp")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="BackgroundCover" type="ColorRect" parent="Background" unique_id=2129429594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="AddonInfosMarginContainer" type="MarginContainer" parent="." unique_id=2068812418]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -155.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Infos" type="VBoxContainer" parent="AddonInfosMarginContainer" unique_id=1103184239]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="AddonSubNameLabel" type="Label" parent="AddonInfosMarginContainer/Infos" unique_id=1410736989]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "GGC"
+horizontal_alignment = 1
+
+[node name="AddonFullNameLabel" type="Label" parent="AddonInfosMarginContainer/Infos" unique_id=378791071]
+layout_mode = 2
+text = "Godot Git Client"
+horizontal_alignment = 1
+
+[node name="AddonVersionLabel" type="Label" parent="AddonInfosMarginContainer/Infos" unique_id=424405977]
+layout_mode = 2
+text = "v1.0"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1284029076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=1009240421]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="ErrorsButton" type="Button" parent="MarginContainer/GridContainer" unique_id=996866575]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "⚠"
+
+[node name="Panel" type="Panel" parent="MarginContainer/GridContainer/ErrorsButton" unique_id=1486956100]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_transform_enabled = true
+
+[node name="ErrorsCountLabel" type="Label" parent="MarginContainer/GridContainer/ErrorsButton/Panel" unique_id=1791521873]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CommitingToolButton" type="Button" parent="MarginContainer/GridContainer" unique_id=934597841]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "💿"
+
+[node name="RemoteToolButton" type="Button" parent="MarginContainer/GridContainer" unique_id=1116613190]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "⤮"
+
+[node name="GGC_LogsMenu" parent="." unique_id=967019917 instance=ExtResource("4_0y6gp")]
+layout_mode = 1
+grow_horizontal = 1
+
+[node name="WindowsContainer" type="Control" parent="." unique_id=280012788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GGC_ErrorWindow" parent="WindowsContainer" unique_id=1170723533 instance=ExtResource("5_ktsl0")]
+visible = false
+layout_mode = 1
+
+[node name="GGC_CommitingToolWindow" parent="WindowsContainer" unique_id=979782132 instance=ExtResource("6_8rbxu")]
+visible = false
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="GGC_RemoteToolWindow" parent="WindowsContainer" unique_id=575061541 instance=ExtResource("7_1netg")]
+visible = false
+layout_mode = 1
+
+[node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("2_k2aub")]
+
+[connection signal="pressed" from="MarginContainer/GridContainer/ErrorsButton" to="." method="_on_errors_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/CommitingToolButton" to="." method="_on_commiting_tool_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/RemoteToolButton" to="." method="_on_remote_tool_button_pressed"]
+[connection signal="gui_input" from="WindowsContainer/GGC_ErrorWindow" to="WindowsContainer/GGC_ErrorWindow" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowsContainer/GGC_CommitingToolWindow" to="WindowsContainer/GGC_CommitingToolWindow" method="_on_gui_input"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

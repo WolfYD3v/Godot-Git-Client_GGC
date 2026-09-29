@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ppn6u4r4yyuv"]
+
+[ext_resource type="PackedScene" uid="uid://04unyd8dp0ed" path="res://addons/godot_git_client/errors/base_error/base_error.tscn" id="1_l85nm"]
+[ext_resource type="Script" uid="uid://0yaui7c6tsbk" path="res://addons/godot_git_client/errors/git_not_init/git_not_init_error.gd" id="2_d2y1x"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_p438n"]
+
+[node name="GitNotInitError" unique_id=1539962584 instance=ExtResource("1_l85nm")]
+visible = true
+anchor_bottom = 0.0
+offset_bottom = 86.0
+grow_vertical = 1
+script = ExtResource("2_d2y1x")
+text = "No Git repo has been initiated yet, GGC cannot work properly if no .git directory exists in the root directoty of the project"
+
+[node name="ErrorTextLabel" parent="." index="0" unique_id=1539188425]
+text = "No Git repo has been initiated yet, GGC cannot work properly if no .git directory exists in the root directoty of the project"
+
+[node name="InitGitButton" type="Button" parent="Actions" parent_id_path=PackedInt32Array(28602244) index="0" unique_id=1061561481]
+layout_mode = 2
+text = "init Git repository"
+
+[node name="GGC_ExecuteShell" parent="." index="2" unique_id=1546650804 instance=ExtResource("3_p438n")]
+
+[connection signal="pressed" from="Actions/InitGitButton" to="." method="_on_init_git_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

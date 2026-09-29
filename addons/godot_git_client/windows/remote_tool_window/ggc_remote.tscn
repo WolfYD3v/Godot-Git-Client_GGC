@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cju7j45ew8mv8"]
+
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_uodjo"]
+[ext_resource type="Script" uid="uid://qpy4w4oro2wg" path="res://addons/godot_git_client/windows/remote_tool_window/ggc_remote.gd" id="2_peayv"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_1jksg"]
+
+[node name="GGC_Remote" type="HBoxContainer" unique_id=614868485]
+custom_minimum_size = Vector2(0, 120)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_uodjo")
+theme_override_constants/separation = 5
+script = ExtResource("2_peayv")
+
+[node name="Control" type="Control" parent="." unique_id=715880144]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InfosContainer" type="VBoxContainer" parent="Control" unique_id=1385605553]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="RemoteNameRichTextLabel" type="RichTextLabel" parent="Control/InfosContainer" unique_id=1548106121]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b]Remote_Name[/b]"
+fit_content = true
+
+[node name="RemoteFetchURLRichTextLabel" type="RichTextLabel" parent="Control/InfosContainer" unique_id=2034326620]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/italics_font_size = 13
+bbcode_enabled = true
+text = "Remote_URL [i][ fetch ][/i]"
+fit_content = true
+
+[node name="RemotePullURLRichTextLabel" type="RichTextLabel" parent="Control/InfosContainer" unique_id=20731299]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/italics_font_size = 13
+bbcode_enabled = true
+text = "Remote_URL [i][ pull ][/i]"
+fit_content = true
+
+[node name="EditInfosContainer" type="VBoxContainer" parent="Control" unique_id=670549450]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="RemoteNameTextEdit" type="TextEdit" parent="Control/EditInfosContainer" unique_id=171160189]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Remote_Name"
+placeholder_text = "Remote_Name"
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="RemoteURLTextEdit" type="TextEdit" parent="Control/EditInfosContainer" unique_id=1296746651]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Remote_URL"
+placeholder_text = "Remote_URL"
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="ActionsContainer" type="VBoxContainer" parent="." unique_id=29865758]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EditActionButton" type="Button" parent="ActionsContainer" unique_id=1436636633]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "EDIT"
+
+[node name="CancelNewRemoteActionButton" type="Button" parent="ActionsContainer" unique_id=697618596]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "CANCEL"
+
+[node name="RemoveActionButton" type="Button" parent="ActionsContainer" unique_id=2058718800]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "REMOVE"
+
+[node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_1jksg")]
+
+[connection signal="pressed" from="ActionsContainer/EditActionButton" to="." method="_on_edit_action_button_pressed"]
+[connection signal="pressed" from="ActionsContainer/CancelNewRemoteActionButton" to="." method="_on_cancel_new_remote_action_button_pressed"]
+[connection signal="pressed" from="ActionsContainer/RemoveActionButton" to="." method="_on_remove_action_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
