@@ -24,7 +24,7 @@ script = ExtResource("2_2x321")
 [node name="Background" type="Panel" parent="." unique_id=664910264]
 layout_mode = 2
 
-[node name="LogsMenuMarginContainer" type="MarginContainer" parent="." unique_id=1744841682]
+[node name="BranchessMenuMarginContainer" type="MarginContainer" parent="." unique_id=1744841682]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
@@ -32,22 +32,22 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="NODES" type="VBoxContainer" parent="LogsMenuMarginContainer" unique_id=1593361180]
+[node name="NODES" type="VBoxContainer" parent="BranchessMenuMarginContainer" unique_id=1593361180]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LogsLabel" type="Label" parent="LogsMenuMarginContainer/NODES" unique_id=1673289825]
+[node name="BranchesLabel" type="Label" parent="BranchessMenuMarginContainer/NODES" unique_id=1673289825]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "LOGS"
+text = "BRANCHES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LogsContainer" type="Control" parent="LogsMenuMarginContainer/NODES" unique_id=947733764]
+[node name="BranchesContainer" type="Control" parent="BranchessMenuMarginContainer/NODES" unique_id=947733764]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="Panel" parent="LogsMenuMarginContainer/NODES/LogsContainer" unique_id=1910092896]
+[node name="Background" type="Panel" parent="BranchessMenuMarginContainer/NODES/BranchesContainer" unique_id=1910092896]
 modulate = Color(0.7539839, 0.75398386, 0.75398386, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -56,7 +56,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LogsMarginContainer" type="MarginContainer" parent="LogsMenuMarginContainer/NODES/LogsContainer" unique_id=1010794663]
+[node name="BranchesMarginContainer" type="MarginContainer" parent="BranchessMenuMarginContainer/NODES/BranchesContainer" unique_id=1010794663]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,16 +68,16 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="LogsMenuMarginContainer/NODES/LogsContainer/LogsMarginContainer" unique_id=2005839312]
+[node name="ScrollContainer" type="ScrollContainer" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer" unique_id=2005839312]
 layout_mode = 2
 
-[node name="NODES" type="VBoxContainer" parent="LogsMenuMarginContainer/NODES/LogsContainer/LogsMarginContainer/ScrollContainer" unique_id=1911837853]
+[node name="NODES" type="VBoxContainer" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer" unique_id=1911837853]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 25
 
-[node name="ToggleLogsButton" type="Button" parent="LogsMenuMarginContainer" unique_id=1818965611]
+[node name="ToggleBranchesButton" type="Button" parent="BranchessMenuMarginContainer" unique_id=1818965611]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -87,4 +87,4 @@ text = "⮝"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=772192886]
 
-[connection signal="pressed" from="LogsMenuMarginContainer/ToggleLogsButton" to="." method="_on_toggle_logs_button_pressed"]
+[connection signal="pressed" from="BranchessMenuMarginContainer/ToggleBranchesButton" to="." method="_on_toggle_logs_button_pressed"]

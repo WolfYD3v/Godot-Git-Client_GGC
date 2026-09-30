@@ -3,9 +3,9 @@ extends MarginContainer
 class_name GGC_BranchesMenu
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var logs_nodes: VBoxContainer = $LogsMenuMarginContainer/NODES/LogsContainer/LogsMarginContainer/ScrollContainer/NODES
-@onready var toggle_logs_button: Button = $LogsMenuMarginContainer/ToggleLogsButton
-@onready var logs_label: Label = $LogsMenuMarginContainer/NODES/LogsLabel
+@onready var logs_nodes: VBoxContainer = $BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES
+@onready var toggle_logs_button: Button = $BranchessMenuMarginContainer/ToggleBranchesButton
+@onready var logs_label: Label = $BranchessMenuMarginContainer/NODES/BranchesLabel
 
 @export_tool_button("TOGGLE", "Button") var action_toggle = _on_toggle_logs_button_pressed
 
