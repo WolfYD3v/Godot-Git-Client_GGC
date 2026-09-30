@@ -71,7 +71,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 25
+theme_override_constants/separation = 15
 
 [node name="ToggleLogsButton" type="Button" parent="LogsMenuMarginContainer" unique_id=1818965611]
 custom_minimum_size = Vector2(30, 30)

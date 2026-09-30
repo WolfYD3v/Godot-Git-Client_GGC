@@ -71,7 +71,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 25
 
 [node name="NewBranchButton" type="Button" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES" unique_id=1770022564]
 layout_mode = 2
@@ -81,7 +81,7 @@ text = "NEW"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 25
+theme_override_constants/separation = 15
 
 [node name="ToggleBranchesButton" type="Button" parent="BranchessMenuMarginContainer" unique_id=1818965611]
 custom_minimum_size = Vector2(30, 30)
