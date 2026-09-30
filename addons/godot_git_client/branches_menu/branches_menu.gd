@@ -42,6 +42,7 @@ func create_branch_item(_name: String = "", _created: bool = false) -> void:
 		func(): if dashboard: dashboard.fire_git_branch_command()
 	)
 	branches_nodes.add_child(ggc_branch_item)
+	branches_nodes.move_child(ggc_branch_item, 0)
 
 func clear_branches() -> void:
 	for branch_item in branches_nodes.get_children(): branch_item.queue_free()
