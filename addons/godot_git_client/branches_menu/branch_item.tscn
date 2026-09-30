@@ -30,3 +30,6 @@ layout_mode = 2
 text = "DELETE"
 
 [node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_c3sor")]
+
+[connection signal="pressed" from="ActionsContainer/SwitchButton" to="." method="_on_switch_button_pressed"]
+[connection signal="pressed" from="ActionsContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
