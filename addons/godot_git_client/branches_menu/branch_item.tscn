@@ -64,6 +64,10 @@ theme_override_constants/separation = 0
 layout_mode = 2
 text = "CREATE"
 
+[node name="CreateAndSwitchButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=1704384002]
+layout_mode = 2
+text = "CREATE AND SWITCH"
+
 [node name="CancelButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=1157256537]
 layout_mode = 2
 text = "CANCEL"
@@ -75,5 +79,6 @@ text = "CANCEL"
 [connection signal="text_changed" from="CreateNewBranchFormContainer/NewBranchNameLineEdit" to="." method="_on_new_branch_name_line_edit_text_changed"]
 [connection signal="text_submitted" from="CreateNewBranchFormContainer/NewBranchNameLineEdit" to="." method="_on_new_branch_name_line_edit_text_submitted"]
 [connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CreateAndSwitchButton" to="." method="_on_create_and_switch_button_pressed"]
 [connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
