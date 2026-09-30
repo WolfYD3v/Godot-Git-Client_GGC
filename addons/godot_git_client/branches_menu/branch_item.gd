@@ -13,9 +13,9 @@ signal notify_update_for_branch_menu
 
 @onready var create_new_branch_form_container: VBoxContainer = %CreateNewBranchFormContainer
 @onready var new_branch_name_line_edit: LineEdit = $CreateNewBranchFormContainer/NewBranchNameLineEdit
-@onready var create_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CreateButton
+@onready var create_button: Button = $CreateNewBranchFormContainer/ActionsContainer/ActionsContainer/CreateButton
 @onready var create_and_switch_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CreateAndSwitchButton
-@onready var cancel_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CancelButton
+@onready var cancel_button: Button = $CreateNewBranchFormContainer/ActionsContainer/ActionsContainer/CancelButton
 
 @onready var ggc_execute_shell: GGC_Execute_Shell = $GGC_ExecuteShell
 
@@ -33,7 +33,10 @@ var creating: bool = false
 func _ready() -> void:
 	toggle_containers()
 	
-	if creating: a()
+	if creating:
+		custom_minimum_size.y = create_new_branch_form_container.custom_minimum_size.y
+		size.y = create_new_branch_form_container.custom_minimum_size.y
+		a()
 	else: init_container()
 
 
@@ -46,6 +49,8 @@ func toggle_containers() -> void:
 func init_container() -> void:
 	creating = false
 	toggle_containers()
+	custom_minimum_size.y = container.custom_minimum_size.y
+	size.y = container.custom_minimum_size.y
 	
 	var _name: String = branch_name.right(-2)
 	if _name in ["main", "master"]: delete_button.queue_free()

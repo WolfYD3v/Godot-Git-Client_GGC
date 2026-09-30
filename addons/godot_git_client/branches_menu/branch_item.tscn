@@ -56,23 +56,28 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ActionsContainer" type="GridContainer" parent="CreateNewBranchFormContainer" unique_id=1151533867]
+[node name="ActionsContainer" type="VBoxContainer" parent="CreateNewBranchFormContainer" unique_id=449569177]
 layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 2
+theme_override_constants/separation = 0
 
-[node name="CreateButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=630913700]
+[node name="ActionsContainer" type="HBoxContainer" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=1337385746]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CreateButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer/ActionsContainer" unique_id=630913700]
+layout_mode = 2
+size_flags_horizontal = 0
 text = "CREATE"
+
+[node name="CancelButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer/ActionsContainer" unique_id=1157256537]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "CANCEL"
 
 [node name="CreateAndSwitchButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=1704384002]
 layout_mode = 2
-text = "CREATE AND SWITCH"
-
-[node name="CancelButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=1157256537]
-layout_mode = 2
-text = "CANCEL"
+size_flags_horizontal = 0
+text = "CREATE + SWITCH"
 
 [node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_c3sor")]
 
@@ -80,7 +85,7 @@ text = "CANCEL"
 [connection signal="pressed" from="Container/ActionsContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="text_changed" from="CreateNewBranchFormContainer/NewBranchNameLineEdit" to="." method="_on_new_branch_name_line_edit_text_changed"]
 [connection signal="text_submitted" from="CreateNewBranchFormContainer/NewBranchNameLineEdit" to="." method="_on_new_branch_name_line_edit_text_submitted"]
-[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/ActionsContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/ActionsContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CreateAndSwitchButton" to="." method="_on_create_and_switch_button_pressed"]
-[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
