@@ -14,6 +14,7 @@ class_name GGC_Dashboard
 func _ready() -> void:
 	ggc_error_window.dashboard = self
 	ggc_commiting_tool_window.dashboard = self
+	ggc_branches_menu.dashboard = self
 	fire_git_branch_command()
 
 

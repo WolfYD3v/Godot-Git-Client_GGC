@@ -16,6 +16,7 @@ branch_name = "  salut"
 [node name="BranchNameLabel" type="Label" parent="." unique_id=231273090]
 layout_mode = 2
 size_flags_vertical = 0
+text = "salut"
 
 [node name="ActionsContainer" type="HBoxContainer" parent="." unique_id=646160413]
 layout_mode = 2

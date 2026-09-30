@@ -2,6 +2,8 @@
 extends VBoxContainer
 class_name GGC_BranchItem
 
+signal notify_update_for_branch_menu
+
 @export var branch_name: String = ""
 
 @onready var branch_name_label: Label = $BranchNameLabel
@@ -38,5 +40,7 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 		"git stash":
 			stashing = not(stashing)
 			if stashing: ggc_execute_shell.execute("git", ["switch", branch_name_label.text])
-		"git switch": ggc_execute_shell.execute("git", ["stash", "pop"])
-		"git branch": pass
+		"git switch":
+			ggc_execute_shell.execute("git", ["stash", "pop"])
+			notify_update_for_branch_menu.emit()
+		"git branch": notify_update_for_branch_menu.emit()

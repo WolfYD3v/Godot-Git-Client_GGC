@@ -15,6 +15,7 @@ var toggled: bool = true
 var saved_toggled_size: Vector2 = Vector2.ZERO
 var untoggled_size: Vector2 = Vector2.ZERO
 var tween: Tween = null
+var dashboard: GGC_Dashboard = null
 
 func _ready() -> void:
 	saved_toggled_size = custom_minimum_size
@@ -34,6 +35,9 @@ func update_branches(input: Array, clear_before: bool = true) -> void:
 	for branch: String in branches_list:
 		var ggc_branch_item: GGC_BranchItem = GGC_BRANCH_ITEM_PACKED_SCENE.instantiate()
 		ggc_branch_item.branch_name = branch
+		ggc_branch_item.notify_update_for_branch_menu.connect(
+			func(): if dashboard: dashboard.fire_git_branch_command()
+		)
 		branches_nodes.add_child(ggc_branch_item)
 
 func clear_branches() -> void:
