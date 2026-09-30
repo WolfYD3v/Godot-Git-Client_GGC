@@ -10,13 +10,10 @@ signal notify_update_for_branch_menu
 @onready var branch_name_label: Label = $Container/BranchNameLabel
 @onready var switch_button: Button = $Container/ActionsContainer/SwitchButton
 @onready var delete_button: Button = $Container/ActionsContainer/DeleteButton
-
 @onready var create_new_branch_form_container: VBoxContainer = %CreateNewBranchFormContainer
 @onready var new_branch_name_line_edit: LineEdit = $CreateNewBranchFormContainer/NewBranchNameLineEdit
-@onready var create_button: Button = $CreateNewBranchFormContainer/ActionsContainer/ActionsContainer/CreateButton
-@onready var create_and_switch_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CreateAndSwitchButton
-@onready var cancel_button: Button = $CreateNewBranchFormContainer/ActionsContainer/ActionsContainer/CancelButton
-
+@onready var create_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CreateButton
+@onready var cancel_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CancelButton
 @onready var ggc_execute_shell: GGC_Execute_Shell = $GGC_ExecuteShell
 
 const FORBIDDEN_CHARACTERS_IN_BRANCH_NAME: Array[String] = [
@@ -63,12 +60,11 @@ func init_container() -> void:
 	delete_button.disabled = currently_selected
 
 func a() -> void:
-	for btn: Button in [create_button, create_and_switch_button]:
-		btn.disabled = new_branch_name_line_edit.text == ""
-		for _e: String in FORBIDDEN_CHARACTERS_IN_BRANCH_NAME: if new_branch_name_line_edit.text.contains(_e): btn.disabled = true
-		for _f: String in [".", "/"]: if new_branch_name_line_edit.text.begins_with(_f): btn.disabled = true
-		for _g: String in [".", "/"]: if new_branch_name_line_edit.text.ends_with(_g): btn.disabled = true
-		for _h: String in ["..", "//", "@{"]: if new_branch_name_line_edit.text.contains(_h): btn.disabled = true
+	create_button.disabled = new_branch_name_line_edit.text == ""
+	for _e: String in FORBIDDEN_CHARACTERS_IN_BRANCH_NAME: if new_branch_name_line_edit.text.contains(_e): create_button.disabled = true
+	for _f: String in [".", "/"]: if new_branch_name_line_edit.text.begins_with(_f): create_button.disabled = true
+	for _g: String in [".", "/"]: if new_branch_name_line_edit.text.ends_with(_g): create_button.disabled = true
+	for _h: String in ["..", "//", "@{"]: if new_branch_name_line_edit.text.contains(_h): create_button.disabled = true
 
 
 
@@ -76,11 +72,6 @@ func _on_create_button_pressed() -> void:
 	branch_name = "  %s" % new_branch_name_line_edit.text
 	init_container()
 	ggc_execute_shell.execute("git", ["branch", new_branch_name_line_edit.text])
-
-func _on_create_and_switch_button_pressed() -> void:
-	branch_name = "  %s" % new_branch_name_line_edit.text
-	init_container()
-	ggc_execute_shell.execute("git", ["switch", "-C", new_branch_name_line_edit.text])
 
 func _on_cancel_button_pressed() -> void:
 	notify_update_for_branch_menu.emit()
