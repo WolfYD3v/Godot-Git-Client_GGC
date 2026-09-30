@@ -3,7 +3,7 @@ extends MarginContainer
 class_name GGC_BranchesMenu
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var branches_nodes: VBoxContainer = $BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES
+@onready var branches_nodes: VBoxContainer = $BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/NODES
 @onready var toggle_branches_button: Button = $BranchessMenuMarginContainer/ToggleBranchesButton
 @onready var branches_label: Label = $BranchessMenuMarginContainer/NODES/BranchesLabel
 
@@ -62,3 +62,6 @@ func tween_branches_menu(_new_size: Vector2, _duration: float = 1.0) -> void:
 func _on_toggle_branches_button_pressed() -> void:
 	toggled = not(toggled)
 	set_toggled_branches_menu_state()
+
+func _on_new_branch_button_pressed() -> void:
+	pass

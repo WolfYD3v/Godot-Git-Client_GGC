@@ -5,12 +5,8 @@
 
 [node name="GGC_BranchesMenu" type="MarginContainer" unique_id=967019917]
 custom_minimum_size = Vector2(250, 350)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -250.0
+offset_right = 250.0
 offset_bottom = 350.0
-grow_horizontal = 0
 pivot_offset_ratio = Vector2(1, 1)
 offset_transform_enabled = true
 mouse_filter = 2
@@ -75,6 +71,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="NewBranchButton" type="Button" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES" unique_id=1770022564]
+layout_mode = 2
+text = "NEW"
+
+[node name="NODES" type="VBoxContainer" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES" unique_id=242010842]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 25
 
 [node name="ToggleBranchesButton" type="Button" parent="BranchessMenuMarginContainer" unique_id=1818965611]
@@ -87,4 +93,5 @@ text = "⮝"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=772192886]
 
-[connection signal="pressed" from="BranchessMenuMarginContainer/ToggleBranchesButton" to="." method="_on_toggle_logs_button_pressed"]
+[connection signal="pressed" from="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/NewBranchButton" to="." method="_on_new_branch_button_pressed"]
+[connection signal="pressed" from="BranchessMenuMarginContainer/ToggleBranchesButton" to="." method="_on_toggle_branches_button_pressed"]
