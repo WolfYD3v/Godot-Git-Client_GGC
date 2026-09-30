@@ -5,8 +5,8 @@ class_name GGC_BranchItem
 @export var branch_name: String = ""
 
 @onready var branch_name_label: Label = $BranchNameLabel
-@onready var delete_button: Button = $ActionsContainer/DeleteButton
 @onready var switch_button: Button = $ActionsContainer/SwitchButton
+@onready var delete_button: Button = $ActionsContainer/DeleteButton
 @onready var ggc_execute_shell: GGC_Execute_Shell = $GGC_ExecuteShell
 
 var currently_selected: bool = false

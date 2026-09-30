@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://peb7sbft6w52"]
+
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_w4lvk"]
+[ext_resource type="Script" uid="uid://dwuvyo4ldu2ia" path="res://addons/godot_git_client/branches_menu/branch_item.gd" id="1_xtnxn"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_c3sor"]
+
+[node name="BranchItem" type="VBoxContainer" unique_id=1977836291]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_w4lvk")
+script = ExtResource("1_xtnxn")
+branch_name = "  salut"
+
+[node name="BranchNameLabel" type="Label" parent="." unique_id=231273090]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ActionsContainer" type="HBoxContainer" parent="." unique_id=646160413]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SwitchButton" type="Button" parent="ActionsContainer" unique_id=398776387]
+layout_mode = 2
+text = "SWITCH"
+
+[node name="DeleteButton" type="Button" parent="ActionsContainer" unique_id=1639534437]
+layout_mode = 2
+text = "DELETE"
+
+[node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_c3sor")]
