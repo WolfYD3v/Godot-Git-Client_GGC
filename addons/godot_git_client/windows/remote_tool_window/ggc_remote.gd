@@ -24,16 +24,8 @@ class_name GGC_Remote
 		if is_node_ready(): update_infos()
 
 const FORBIDDEN_CHARACTERS_IN_REMOTE_NAME: Array[String] = [
-	# Espaces et caractères de contrôle ASCII (invisibles, retours ligne, tabulations)
-	' ', '\t', '\n', '\r',
-
-	# Caractères réservés / interdits (Git, Fichiers, URL)
-	'/', '\\', ':', '*', '?', '"', '<', '>', '|',
-	'~', '^', '[', ']', '{', '}', '@', '#', '%', '`',
-	
-	# Séquences spécifiques Git à éviter dans les chaînes (ex: "..")
-	# à traiter à part si tu vérifies des paires de caractères.
-	"..",
+	' ', '\t', '\n', '\r', '/', '\\', ':', '*', '?', '"', '<', '>',
+	'|', '~', '^', '[', ']', '{', '}', '@', '#', '%', '`', ".."
 ]
 
 var editing_infos: bool = false

@@ -4,34 +4,76 @@
 [ext_resource type="Script" uid="uid://dwuvyo4ldu2ia" path="res://addons/godot_git_client/branches_menu/branch_item.gd" id="1_xtnxn"]
 [ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_c3sor"]
 
-[node name="BranchItem" type="VBoxContainer" unique_id=1977836291]
+[node name="BranchItem" type="Control" unique_id=2000536716]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_bottom = 62.0
 grow_horizontal = 2
 theme = ExtResource("1_w4lvk")
 script = ExtResource("1_xtnxn")
-branch_name = "  salut"
 
-[node name="BranchNameLabel" type="Label" parent="." unique_id=231273090]
+[node name="Container" type="VBoxContainer" parent="." unique_id=83434898]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BranchNameLabel" type="Label" parent="Container" unique_id=231273090]
 layout_mode = 2
 size_flags_vertical = 0
 text = "salut"
 
-[node name="ActionsContainer" type="HBoxContainer" parent="." unique_id=646160413]
+[node name="ActionsContainer" type="HBoxContainer" parent="Container" unique_id=646160413]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SwitchButton" type="Button" parent="ActionsContainer" unique_id=398776387]
+[node name="SwitchButton" type="Button" parent="Container/ActionsContainer" unique_id=398776387]
 layout_mode = 2
 text = "SWITCH"
 
-[node name="DeleteButton" type="Button" parent="ActionsContainer" unique_id=1639534437]
+[node name="DeleteButton" type="Button" parent="Container/ActionsContainer" unique_id=1639534437]
 layout_mode = 2
 text = "DELETE"
 
+[node name="CreateNewBranchFormContainer" type="VBoxContainer" parent="." unique_id=9895361]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewBranchNameLineEdit" type="LineEdit" parent="CreateNewBranchFormContainer" unique_id=584721309]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ActionsContainer" type="HBoxContainer" parent="CreateNewBranchFormContainer" unique_id=861758762]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CreateButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=630913700]
+layout_mode = 2
+text = "CREATE"
+
+[node name="CancelButton" type="Button" parent="CreateNewBranchFormContainer/ActionsContainer" unique_id=1157256537]
+layout_mode = 2
+text = "CANCEL"
+
 [node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_c3sor")]
 
-[connection signal="pressed" from="ActionsContainer/SwitchButton" to="." method="_on_switch_button_pressed"]
-[connection signal="pressed" from="ActionsContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Container/ActionsContainer/SwitchButton" to="." method="_on_switch_button_pressed"]
+[connection signal="pressed" from="Container/ActionsContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="text_changed" from="CreateNewBranchFormContainer/NewBranchNameLineEdit" to="." method="_on_new_branch_name_line_edit_text_changed"]
+[connection signal="text_submitted" from="CreateNewBranchFormContainer/NewBranchNameLineEdit" to="." method="_on_new_branch_name_line_edit_text_submitted"]
+[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="CreateNewBranchFormContainer/ActionsContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

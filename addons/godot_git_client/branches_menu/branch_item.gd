@@ -1,22 +1,51 @@
 @tool
-extends VBoxContainer
+extends Control
 class_name GGC_BranchItem
 
 signal notify_update_for_branch_menu
 
 @export var branch_name: String = ""
 
-@onready var branch_name_label: Label = $BranchNameLabel
-@onready var switch_button: Button = $ActionsContainer/SwitchButton
-@onready var delete_button: Button = $ActionsContainer/DeleteButton
+@onready var container: VBoxContainer = %Container
+@onready var branch_name_label: Label = $Container/BranchNameLabel
+@onready var switch_button: Button = $Container/ActionsContainer/SwitchButton
+@onready var delete_button: Button = $Container/ActionsContainer/DeleteButton
+
+@onready var create_new_branch_form_container: VBoxContainer = %CreateNewBranchFormContainer
+@onready var new_branch_name_line_edit: LineEdit = $CreateNewBranchFormContainer/NewBranchNameLineEdit
+@onready var create_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CreateButton
+@onready var cancel_button: Button = $CreateNewBranchFormContainer/ActionsContainer/CancelButton
+
 @onready var ggc_execute_shell: GGC_Execute_Shell = $GGC_ExecuteShell
+
+const FORBIDDEN_CHARACTERS_IN_BRANCH_NAME: Array[String] = [
+	' ', '\t', '\n', '\r', '\\', ':', '*', '?', '"', '<', '>',
+	'|', '~', '^', '[', ']', '{', '}', '@', '#', '%', '`', ".."
+]
 
 var currently_selected: bool = false
 var stashing: bool = false
+var creating: bool = false
 
 
 
 func _ready() -> void:
+	toggle_containers()
+	
+	if creating: a()
+	else: init_container()
+
+
+
+func toggle_containers() -> void:
+	container.visible = not(creating)
+	create_new_branch_form_container.visible = creating
+	if creating: new_branch_name_line_edit.text = ""
+
+func init_container() -> void:
+	creating = false
+	toggle_containers()
+	
 	var _name: String = branch_name.right(-2)
 	if _name in ["main", "master"]: delete_button.queue_free()
 	if branch_name_label: branch_name_label.text = _name
@@ -27,7 +56,23 @@ func _ready() -> void:
 	switch_button.disabled = currently_selected
 	delete_button.disabled = currently_selected
 
+func a() -> void:
+	create_button.disabled = new_branch_name_line_edit.text == ""
+	for _e: String in FORBIDDEN_CHARACTERS_IN_BRANCH_NAME: if new_branch_name_line_edit.text.contains(_e): create_button.disabled = true
+	for _f: String in [".", "/"]: if new_branch_name_line_edit.text.begins_with(_f): create_button.disabled = true
+	for _g: String in [".", "/"]: if new_branch_name_line_edit.text.ends_with(_g): create_button.disabled = true
+	for _h: String in ["..", "//", "@{"]: if new_branch_name_line_edit.text.contains(_h): create_button.disabled = true
 
+
+
+func _on_create_button_pressed() -> void:
+	branch_name = "  %s" % new_branch_name_line_edit.text
+	init_container()
+	ggc_execute_shell.execute("git", ["branch", new_branch_name_line_edit.text])
+
+func _on_cancel_button_pressed() -> void:
+	notify_update_for_branch_menu.emit()
+	queue_free()
 
 func _on_switch_button_pressed() -> void:
 	ggc_execute_shell.execute("git", ["stash"])
@@ -44,3 +89,10 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 			ggc_execute_shell.execute("git", ["stash", "pop"])
 			notify_update_for_branch_menu.emit()
 		"git branch": notify_update_for_branch_menu.emit()
+
+
+func _on_new_branch_name_line_edit_text_changed(_new_text: String) -> void:
+	a()
+
+func _on_new_branch_name_line_edit_text_submitted(_new_text: String) -> void:
+	a()

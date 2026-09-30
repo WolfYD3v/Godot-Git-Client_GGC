@@ -32,13 +32,16 @@ func update_branches(input: Array, clear_before: bool = true) -> void:
 	
 	if clear_before: clear_branches()
 	
-	for branch: String in branches_list:
-		var ggc_branch_item: GGC_BranchItem = GGC_BRANCH_ITEM_PACKED_SCENE.instantiate()
-		ggc_branch_item.branch_name = branch
-		ggc_branch_item.notify_update_for_branch_menu.connect(
-			func(): if dashboard: dashboard.fire_git_branch_command()
-		)
-		branches_nodes.add_child(ggc_branch_item)
+	for branch: String in branches_list: create_branch_item(branch)
+
+func create_branch_item(_name: String = "", _created: bool = false) -> void:
+	var ggc_branch_item: GGC_BranchItem = GGC_BRANCH_ITEM_PACKED_SCENE.instantiate()
+	ggc_branch_item.creating = _created
+	ggc_branch_item.branch_name = _name
+	ggc_branch_item.notify_update_for_branch_menu.connect(
+		func(): if dashboard: dashboard.fire_git_branch_command()
+	)
+	branches_nodes.add_child(ggc_branch_item)
 
 func clear_branches() -> void:
 	for branch_item in branches_nodes.get_children(): branch_item.queue_free()
@@ -68,4 +71,4 @@ func _on_toggle_branches_button_pressed() -> void:
 	set_toggled_branches_menu_state()
 
 func _on_new_branch_button_pressed() -> void:
-	pass
+	create_branch_item("", true)
