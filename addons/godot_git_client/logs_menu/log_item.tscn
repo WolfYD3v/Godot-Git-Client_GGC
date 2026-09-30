@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wn5ohr3ugxuq"]
 
-[ext_resource type="Script" uid="uid://div4jpvg11r6u" path="res://addons/godot_git_client/log_item/log_item.gd" id="1_sge3v"]
+[ext_resource type="Script" uid="uid://div4jpvg11r6u" path="res://addons/godot_git_client/logs_menu/log_item.gd" id="1_sge3v"]
 [ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_yw6py"]
 
 [node name="GGC_LogItem" type="Label" unique_id=548398525]
