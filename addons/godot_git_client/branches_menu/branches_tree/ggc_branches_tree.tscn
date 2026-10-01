@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cp61xr8wmdoq1"]
+
+[ext_resource type="Script" uid="uid://bi0ua0ktpuecm" path="res://addons/godot_git_client/branches_menu/branches_tree/ggc_branches_tree.gd" id="1_fysil"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="2_isha5"]
+
+[node name="GGC_BranchesTree" type="Control" unique_id=2131559641]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fysil")
+
+[node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("2_isha5")]
+
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
