@@ -73,9 +73,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 25
 
-[node name="NewBranchButton" type="Button" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES" unique_id=1770022564]
+[node name="HBoxContainer" type="HBoxContainer" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES" unique_id=1868943487]
 layout_mode = 2
+
+[node name="NewBranchButton" type="Button" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/HBoxContainer" unique_id=1770022564]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "NEW"
+
+[node name="LookTreeButton" type="Button" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/HBoxContainer" unique_id=394287060]
+layout_mode = 2
+text = "L"
 
 [node name="NODES" type="VBoxContainer" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES" unique_id=242010842]
 layout_mode = 2
@@ -93,5 +101,6 @@ text = "⮝"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=772192886]
 
-[connection signal="pressed" from="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/NewBranchButton" to="." method="_on_new_branch_button_pressed"]
+[connection signal="pressed" from="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/HBoxContainer/NewBranchButton" to="." method="_on_new_branch_button_pressed"]
+[connection signal="pressed" from="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/HBoxContainer/LookTreeButton" to="." method="_on_look_tree_button_pressed"]
 [connection signal="pressed" from="BranchessMenuMarginContainer/ToggleBranchesButton" to="." method="_on_toggle_branches_button_pressed"]

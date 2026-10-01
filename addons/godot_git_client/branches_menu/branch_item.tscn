@@ -5,19 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_c3sor"]
 
 [node name="BranchItem" type="Control" unique_id=2000536716]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 62.0
+offset_bottom = 65.0
 grow_horizontal = 2
 theme = ExtResource("1_w4lvk")
 script = ExtResource("1_xtnxn")
 
 [node name="Container" type="VBoxContainer" parent="." unique_id=83434898]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 65)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +26,6 @@ grow_vertical = 2
 [node name="BranchNameLabel" type="Label" parent="Container" unique_id=231273090]
 layout_mode = 2
 size_flags_vertical = 0
-text = "salut"
 
 [node name="ActionsContainer" type="HBoxContainer" parent="Container" unique_id=646160413]
 layout_mode = 2
@@ -44,7 +41,7 @@ text = "DELETE"
 
 [node name="CreateNewBranchFormContainer" type="VBoxContainer" parent="." unique_id=9895361]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 120)
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

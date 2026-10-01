@@ -30,10 +30,7 @@ var creating: bool = false
 func _ready() -> void:
 	toggle_containers()
 	
-	if creating:
-		custom_minimum_size.y = create_new_branch_form_container.custom_minimum_size.y
-		size.y = create_new_branch_form_container.custom_minimum_size.y
-		a()
+	if creating: a()
 	else: init_container()
 
 
@@ -46,8 +43,6 @@ func toggle_containers() -> void:
 func init_container() -> void:
 	creating = false
 	toggle_containers()
-	custom_minimum_size.y = container.custom_minimum_size.y
-	size.y = container.custom_minimum_size.y
 	
 	var _name: String = branch_name.right(-2)
 	if _name in ["main", "master"]: delete_button.queue_free()

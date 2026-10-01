@@ -10,6 +10,7 @@ class_name GGC_BranchesMenu
 @export_tool_button("TOGGLE", "Button") var action_toggle = _on_toggle_branches_button_pressed
 
 const GGC_BRANCH_ITEM_PACKED_SCENE: PackedScene = preload("res://addons/godot_git_client/branches_menu/branch_item.tscn")
+const GGC_BRANCHES_TREE_PACKED_SCENE: PackedScene = preload("res://addons/godot_git_client/branches_menu/branches_tree/ggc_branches_tree.tscn")
 
 var toggled: bool = true
 var saved_toggled_size: Vector2 = Vector2.ZERO
@@ -73,3 +74,9 @@ func _on_toggle_branches_button_pressed() -> void:
 
 func _on_new_branch_button_pressed() -> void:
 	create_branch_item("", true)
+
+
+func _on_look_tree_button_pressed() -> void:
+	if dashboard:
+		var ggc_branches_tree_scene: GGC_BranchesTree = GGC_BRANCHES_TREE_PACKED_SCENE.instantiate()
+		dashboard.add_child(ggc_branches_tree_scene)
