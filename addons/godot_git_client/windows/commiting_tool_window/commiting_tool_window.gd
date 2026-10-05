@@ -107,4 +107,5 @@ func _on_restore_button_pressed() -> void:
 
 
 func _on_overlayere_visibility_changed() -> void:
-	close_button.disabled = not(overlayere.visible)
+	if overlayere.visible: close_button.disabled = true
+	else: close_button.disabled = false
