@@ -87,8 +87,8 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 			var real_branches_array: PackedStringArray = []
 			for _branch: String in temp_branches_array: real_branches_array.append(_branch.right(-2))
 			init_option_button.call_deferred(branch_selector_option_button, real_branches_array)
-		"git push": update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0], false, false)
-		"git pull": update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0], false, false)
+		"git push": update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
+		"git pull": update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
 		_: pass
 
 
