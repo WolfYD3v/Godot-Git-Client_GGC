@@ -14,6 +14,7 @@ enum PANELS {
 @onready var commit_panel: GGC_CommitPanel = $VBoxContainer/Interface/MarginContainer/CommitPanel
 @onready var overlayere: ColorRect = $VBoxContainer/Interface/Overlayere
 @onready var push_pull_panel: GGC_PushPullPanel = $VBoxContainer/Interface/MarginContainer/PushPullPanel
+@onready var close_button: Button = $VBoxContainer/TopBar/MarginContainer/NODES/CloseButton
 
 @export var logging: bool = true
 
@@ -103,3 +104,7 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 
 func _on_restore_button_pressed() -> void:
 	pass
+
+
+func _on_overlayere_visibility_changed() -> void:
+	close_button.disabled = not(overlayere.visible)

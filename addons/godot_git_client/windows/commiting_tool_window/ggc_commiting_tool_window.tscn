@@ -120,4 +120,5 @@ color = Color(0, 0, 0, 0.5882353)
 [connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/RestoreButton" to="." method="_on_restore_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/PushButton" to="." method="_on_push_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/PullButton" to="." method="_on_pull_button_pressed"]
+[connection signal="visibility_changed" from="VBoxContainer/Interface/Overlayere" to="." method="_on_overlayere_visibility_changed"]
 [connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
