@@ -106,11 +106,7 @@ func _on_close_button_pressed() -> void:
 	close_panel()
 
 func _on_remote_selector_option_button_item_selected(index: int) -> void:
-	print(index)
 	current_remote_selected = remote_selector_option_button.get_item_text(index)
-	print(current_remote_selected)
 
 func _on_branch_selector_option_button_item_selected(index: int) -> void:
-	print(index)
 	current_branch_selected = branch_selector_option_button.get_item_text(index)
-	print(current_branch_selected)
