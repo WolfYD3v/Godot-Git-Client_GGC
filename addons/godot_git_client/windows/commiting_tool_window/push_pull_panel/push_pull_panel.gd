@@ -32,8 +32,9 @@ func init_option_button(option_button: OptionButton, value: PackedStringArray) -
 	option_button.clear()
 	
 	for idx: int in range(len(value)):
+		print(idx)
 		var y = value[idx]
-		option_button.add_item(y, idx)
+		option_button.add_item(y)
 
 func update_ggc_commiting_tool_window_terminal(text: String, clear: bool = false, include_user: bool = true) -> void:
 	if ggc_commiting_tool_window: ggc_commiting_tool_window.update_terminal(text, clear, include_user)
@@ -92,6 +93,8 @@ func _on_close_button_pressed() -> void:
 	force_check_button.button_pressed = false
 
 func _on_remote_selector_option_button_item_selected(index: int) -> void:
+	print(index)
+	print(remote_selector_option_button.get_it)
 	current_remote_selected = remote_selector_option_button.get_item_text(index)
 
 func _on_branch_selector_option_button_item_selected(index: int) -> void:
