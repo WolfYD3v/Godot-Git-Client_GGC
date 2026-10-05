@@ -58,7 +58,10 @@ func create_remote(_remote_name: String, _remote_url: String, editing: bool = fa
 
 
 func _on_new_remote_button_pressed() -> void:
-	create_remote("Remote_%s" % (remotes_list.get_child_count() + 1), "", true)
+	var new_remote_name: String = ""
+	if remotes_list.get_child_count() <= 0: new_remote_name = "origin"
+	else: new_remote_name = "New_Remote_%s" % remotes_list.get_child_count()
+	create_remote(new_remote_name, "", true)
 	update_remotes_count()
 
 func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteSheelOutput) -> void:

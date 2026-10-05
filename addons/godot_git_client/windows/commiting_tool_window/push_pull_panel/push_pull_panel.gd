@@ -68,7 +68,7 @@ func fire_pull_command() -> void:
 	update_ggc_commiting_tool_window_terminal("git pull %s %s" % [
 		current_remote_selected, current_branch_selected
 	])
-	#ggc_execute_shell.execute("git", ["pull", current_remote_selected, current_branch_selected])
+	ggc_execute_shell.execute("git", ["pull", current_remote_selected, current_branch_selected])
 
 func close_panel() -> void:
 	if ggc_commiting_tool_window: ggc_commiting_tool_window.toggle_panel(
@@ -104,7 +104,6 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 
 func _on_close_button_pressed() -> void:
 	close_panel()
-	# COMMENT TO DELETE LATER (FOR TEST SAKE ONLY)
 
 func _on_remote_selector_option_button_item_selected(index: int) -> void:
 	current_remote_selected = remote_selector_option_button.get_item_text(index)

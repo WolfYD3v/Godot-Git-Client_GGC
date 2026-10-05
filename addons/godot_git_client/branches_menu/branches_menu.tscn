@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cq18sktaxx4n0" path="res://addons/godot_git_client/branches_menu/branches_menu.gd" id="2_2x321"]
 
 [node name="GGC_BranchesMenu" type="MarginContainer" unique_id=967019917]
-custom_minimum_size = Vector2(250, 350)
+custom_minimum_size = Vector2(400, 350)
 offset_right = 250.0
 offset_bottom = 350.0
 pivot_offset_ratio = Vector2(1, 1)
@@ -82,6 +82,7 @@ size_flags_horizontal = 3
 text = "NEW"
 
 [node name="LookTreeButton" type="Button" parent="BranchessMenuMarginContainer/NODES/BranchesContainer/BranchesMarginContainer/ScrollContainer/NODES/HBoxContainer" unique_id=394287060]
+visible = false
 layout_mode = 2
 text = "L"
 

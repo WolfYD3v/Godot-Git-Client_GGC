@@ -42,8 +42,6 @@ func take_focus() -> void:
 
 
 
-func _on_mouse_entered() -> void:
-	_mouse_entered = true
+func _on_mouse_entered() -> void: _mouse_entered = true
 
-func _on_mouse_exited() -> void:
-	_mouse_entered = false
+func _on_mouse_exited() -> void: _mouse_entered = false
