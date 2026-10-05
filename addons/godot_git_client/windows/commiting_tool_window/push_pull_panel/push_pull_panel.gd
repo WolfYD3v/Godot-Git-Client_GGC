@@ -57,7 +57,10 @@ func fire_push_command() -> void:
 	update_ggc_commiting_tool_window_terminal("git push %s %s" % [
 		current_remote_selected, current_branch_selected
 	])
-	ggc_execute_shell.execute("git", ["push", current_remote_selected, current_branch_selected])
+	var cmd_args: Array[String] = ["push"]
+	if force_check_button.button_pressed: cmd_args.append("-f")
+	cmd_args.append_array([current_remote_selected, current_branch_selected])
+	ggc_execute_shell.execute("git", cmd_args)
 
 func fire_pull_command() -> void:
 	if current_remote_selected == "": current_remote_selected = remote_selector_option_button.get_item_text(0)
