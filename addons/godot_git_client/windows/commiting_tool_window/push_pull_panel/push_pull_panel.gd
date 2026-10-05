@@ -32,7 +32,6 @@ func init_option_button(option_button: OptionButton, value: PackedStringArray) -
 	option_button.clear()
 	
 	for idx: int in range(len(value)):
-		print(idx)
 		var y = value[idx]
 		option_button.add_item(y)
 
@@ -53,16 +52,20 @@ func set_action(action: ACTION) -> void:
 			action_button.pressed.connect(fire_pull_command)
 
 func fire_push_command() -> void:
+	if current_remote_selected == "": current_remote_selected = remote_selector_option_button.get_item_text(0)
+	if current_branch_selected == "": current_branch_selected = branch_selector_option_button.get_item_text(0)
 	update_ggc_commiting_tool_window_terminal("git push %s %s" % [
 		current_remote_selected, current_branch_selected
 	])
 	ggc_execute_shell.execute("git", ["push", current_remote_selected, current_branch_selected])
 
 func fire_pull_command() -> void:
+	if current_remote_selected == "": current_remote_selected = remote_selector_option_button.get_item_text(0)
+	if current_branch_selected == "": current_branch_selected = branch_selector_option_button.get_item_text(0)
 	update_ggc_commiting_tool_window_terminal("git pull %s %s" % [
 		current_remote_selected, current_branch_selected
 	])
-	ggc_execute_shell.execute("git", ["pull", current_remote_selected, current_branch_selected])
+	#ggc_execute_shell.execute("git", ["pull", current_remote_selected, current_branch_selected])
 
 
 
@@ -94,8 +97,10 @@ func _on_close_button_pressed() -> void:
 
 func _on_remote_selector_option_button_item_selected(index: int) -> void:
 	print(index)
-	print(remote_selector_option_button.get_it)
 	current_remote_selected = remote_selector_option_button.get_item_text(index)
+	print(current_remote_selected)
 
 func _on_branch_selector_option_button_item_selected(index: int) -> void:
+	print(index)
 	current_branch_selected = branch_selector_option_button.get_item_text(index)
+	print(current_branch_selected)
