@@ -60,6 +60,7 @@ func fire_push_command() -> void:
 	var cmd_args: Array[String] = ["push"]
 	if force_check_button.button_pressed: cmd_args.append("-f")
 	cmd_args.append_array([current_remote_selected, current_branch_selected])
+	if ggc_commiting_tool_window: ggc_commiting_tool_window.overlayere.show()
 	ggc_execute_shell.execute("git", cmd_args)
 
 func fire_pull_command() -> void:
@@ -68,12 +69,15 @@ func fire_pull_command() -> void:
 	update_ggc_commiting_tool_window_terminal("git pull %s %s" % [
 		current_remote_selected, current_branch_selected
 	])
+	if ggc_commiting_tool_window: ggc_commiting_tool_window.overlayere.show()
 	ggc_execute_shell.execute("git", ["pull", current_remote_selected, current_branch_selected])
 
 func close_panel() -> void:
-	if ggc_commiting_tool_window: ggc_commiting_tool_window.toggle_panel(
-		ggc_commiting_tool_window.PANELS.MAIN
-	)
+	if ggc_commiting_tool_window:
+		ggc_commiting_tool_window.toggle_panel(
+			ggc_commiting_tool_window.PANELS.MAIN
+		)
+		ggc_commiting_tool_window.overlayere.hide()
 	force_check_button.button_pressed = false
 
 
