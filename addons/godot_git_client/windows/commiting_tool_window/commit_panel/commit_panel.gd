@@ -112,8 +112,8 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 			ggc_commiting_tool_window.overlayere.hide()
 			_on_cancel_commit_button_pressed()
 			update_commit_button_clickability()
-			update_ggc_commiting_tool_window_terminal('git commit -m "%s"' % "commit_message", false, false)
-			ggc_execute_shell.execute("git", ["commit", "-m", "commit_message"])
+			update_ggc_commiting_tool_window_terminal('git commit -m "%s"' % commit_message, false, false)
+			ggc_execute_shell.execute("git", ["commit", "-m", commit_message])
 		"git commit":
 			update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
 			if ggc_commiting_tool_window.dashboard: ggc_commiting_tool_window.dashboard.fire_git_log_command()
