@@ -17,7 +17,8 @@ func _ready() -> void:
 
 
 
-var a = func(caller: Control):
+# It's a function, but written in a more fun way :)
+var move_button = func(caller: Control):
 	if caller.get_parent() == stage_files_list_container:
 		caller.reparent(commit_files_list_container)
 		update_commit_button_clickability()
@@ -26,6 +27,10 @@ var a = func(caller: Control):
 		caller.reparent(stage_files_list_container)
 		update_commit_button_clickability()
 		return
+
+func setup() -> void:
+	update_commit_button_clickability()
+	ggc_execute_shell.execute("git", ["status", "-s"])
 
 func init_list_containers(new_content: Dictionary) -> void:
 	# Clear the old children nodes in the list containers
@@ -42,7 +47,7 @@ func init_list_containers(new_content: Dictionary) -> void:
 			var button: Button = Button.new()
 			button.text = _content
 			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			button.pressed.connect(a.bind(button))
+			button.pressed.connect(move_button.bind(button))
 			list_container.add_child(button)
 
 func update_commit_button_clickability() -> void:
@@ -54,6 +59,10 @@ func cmd_output_to_array(cmd_output: String) -> PackedStringArray:
 
 func update_ggc_commiting_tool_window_terminal(text: String, clear: bool = false, include_user: bool = true) -> void:
 	if ggc_commiting_tool_window: ggc_commiting_tool_window.update_terminal(text, clear, include_user)
+
+func close_panel() -> void:
+	ggc_commiting_tool_window.toggle_panel(ggc_commiting_tool_window.PANELS.MAIN)
+	commit_name_line_edit.text = ""
 
 
 
@@ -71,10 +80,7 @@ func _on_use_commit_generic_name_button_pressed() -> void:
 	]
 	commit_name_line_edit.text = generic_commit_name
 
-func _on_cancel_commit_button_pressed() -> void:
-	ggc_commiting_tool_window.main.show()
-	hide()
-	commit_name_line_edit.text = ""
+func _on_cancel_commit_button_pressed() -> void: close_panel()
 
 func _on_commit_bis_button_pressed() -> void:
 	ggc_commiting_tool_window.overlayere.show()
@@ -92,7 +98,7 @@ func _on_commit_bis_button_pressed() -> void:
 	print(git_add_cmd_args.split(" ", false))
 	
 	
-	# update_terminal("git %s" % git_add_cmd_args, false, false)
+	update_ggc_commiting_tool_window_terminal("git %s" % git_add_cmd_args, false, false)
 	ggc_execute_shell.execute("git", git_add_cmd_args.split(" ", false))
 
 func _on_commit_name_line_edit_text_changed(_new_text: String) -> void:
@@ -101,7 +107,7 @@ func _on_commit_name_line_edit_text_changed(_new_text: String) -> void:
 func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteSheelOutput) -> void:
 	match ggc_execute_sheel_output.action:
 		"git status":
-			update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
+			update_ggc_commiting_tool_window_terminal("\n%s" % ggc_execute_sheel_output.output[0])
 			var files: Dictionary[String, Array] = {
 				"stage": cmd_output_to_array(ggc_execute_sheel_output.output[0]),
 				"commit": []
@@ -110,7 +116,7 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 		"git add":
 			update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
 			ggc_commiting_tool_window.overlayere.hide()
-			_on_cancel_commit_button_pressed()
+			close_panel()
 			update_commit_button_clickability()
 			update_ggc_commiting_tool_window_terminal('git commit -m "%s"' % commit_message, false, false)
 			ggc_execute_shell.execute("git", ["commit", "-m", commit_message])
@@ -118,8 +124,3 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 			update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
 			if ggc_commiting_tool_window.dashboard: ggc_commiting_tool_window.dashboard.fire_git_log_command()
 		_: pass
-
-
-func setup() -> void:
-	update_commit_button_clickability()
-	ggc_execute_shell.execute("git", ["status", "-s"])

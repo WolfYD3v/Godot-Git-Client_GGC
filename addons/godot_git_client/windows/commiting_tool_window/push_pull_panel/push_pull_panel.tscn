@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b0xk3cnaegrl8"]
+
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_7ankq"]
+[ext_resource type="Script" uid="uid://c7y1fmc7pqgod" path="res://addons/godot_git_client/windows/commiting_tool_window/push_pull_panel/push_pull_panel.gd" id="2_52gfx"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_oca1v"]
+
+[node name="PushPullPanel" type="VBoxContainer" unique_id=1117890103]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7ankq")
+theme_override_constants/separation = 35
+alignment = 1
+script = ExtResource("2_52gfx")
+
+[node name="SelectorsContainer" type="HBoxContainer" parent="." unique_id=525543843]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="RemoteSelectorContainer" type="VBoxContainer" parent="SelectorsContainer" unique_id=175844564]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="RemoteSelectorLabel" type="Label" parent="SelectorsContainer/RemoteSelectorContainer" unique_id=455316387]
+layout_mode = 2
+text = "REMOTE"
+
+[node name="RemoteSelectorOptionButton" type="OptionButton" parent="SelectorsContainer/RemoteSelectorContainer" unique_id=570843189]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+selected = 0
+item_count = 1
+popup/item_0/text = "origin"
+popup/item_0/id = 0
+
+[node name="BranchSelectorContainer" type="VBoxContainer" parent="SelectorsContainer" unique_id=71723065]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="BranchSelectorLabel" type="Label" parent="SelectorsContainer/BranchSelectorContainer" unique_id=795925201]
+layout_mode = 2
+text = "BRANCH"
+
+[node name="BranchSelectorOptionButton" type="OptionButton" parent="SelectorsContainer/BranchSelectorContainer" unique_id=1446288450]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "alors"
+popup/item_0/id = 0
+popup/item_1/text = "main"
+popup/item_1/id = 1
+popup/item_2/text = "test"
+popup/item_2/id = 2
+
+[node name="ActionContainer" type="VBoxContainer" parent="." unique_id=786911954]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ForceCheckButton" type="CheckButton" parent="ActionContainer" unique_id=1165432988]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Force ?"
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="ActionContainer" unique_id=1128447768]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ActionButton" type="Button" parent="ActionContainer/ButtonsContainer" unique_id=1075149281]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ACTION"
+
+[node name="CloseButton" type="Button" parent="ActionContainer/ButtonsContainer" unique_id=917305544]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CLOSE"
+
+[node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_oca1v")]
+
+[connection signal="item_selected" from="SelectorsContainer/RemoteSelectorContainer/RemoteSelectorOptionButton" to="." method="_on_remote_selector_option_button_item_selected"]
+[connection signal="item_selected" from="SelectorsContainer/BranchSelectorContainer/BranchSelectorOptionButton" to="." method="_on_branch_selector_option_button_item_selected"]
+[connection signal="pressed" from="ActionContainer/ButtonsContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
