@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://dtp1bgapce7dw"]
+
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://addons/godot_git_client/assets/space-worm-theme/space_worm_theme.tres" id="1_ybx77"]
+[ext_resource type="Script" uid="uid://btjlc713jxsqw" path="res://addons/godot_git_client/windows/commiting_tool_window/commit_panel/commit_panel.gd" id="2_xsbum"]
+[ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_4d34w"]
+
+[node name="CommitPanel" type="HBoxContainer" unique_id=1855035391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ybx77")
+theme_override_constants/separation = 35
+script = ExtResource("2_xsbum")
+
+[node name="FilesContainer" type="VBoxContainer" parent="." unique_id=168262543]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="StageFileContainer" type="VBoxContainer" parent="FilesContainer" unique_id=786024439]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TopArea" type="HBoxContainer" parent="FilesContainer/StageFileContainer" unique_id=1977105185]
+layout_mode = 2
+
+[node name="StageFilesLabel" type="Label" parent="FilesContainer/StageFileContainer/TopArea" unique_id=1290021508]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Files to stage"
+vertical_alignment = 2
+
+[node name="AddAllFilesToStageButton" type="Button" parent="FilesContainer/StageFileContainer/TopArea" unique_id=295459544]
+layout_mode = 2
+text = "Add all"
+
+[node name="Panel" type="Panel" parent="FilesContainer/StageFileContainer" unique_id=1843230661]
+modulate = Color(0.7529412, 0.7529412, 0.7529412, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="FilesContainer/StageFileContainer/Panel" unique_id=108236915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FilesContainer/StageFileContainer/Panel/MarginContainer" unique_id=372496682]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListContainer" type="VBoxContainer" parent="FilesContainer/StageFileContainer/Panel/MarginContainer/ScrollContainer" unique_id=323110717]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="FilesCommitingContainer" type="VBoxContainer" parent="FilesContainer" unique_id=929964482]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TopArea" type="HBoxContainer" parent="FilesContainer/FilesCommitingContainer" unique_id=1972841316]
+layout_mode = 2
+
+[node name="CommitFilesLabel" type="Label" parent="FilesContainer/FilesCommitingContainer/TopArea" unique_id=1660522994]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Files to commit"
+vertical_alignment = 2
+
+[node name="ClearFilesToStageButton" type="Button" parent="FilesContainer/FilesCommitingContainer/TopArea" unique_id=1322952678]
+layout_mode = 2
+text = "Clear"
+
+[node name="Panel" type="Panel" parent="FilesContainer/FilesCommitingContainer" unique_id=134112868]
+modulate = Color(0.7529412, 0.7529412, 0.7529412, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="FilesContainer/FilesCommitingContainer/Panel" unique_id=982147124]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FilesContainer/FilesCommitingContainer/Panel/MarginContainer" unique_id=899529000]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListContainer" type="VBoxContainer" parent="FilesContainer/FilesCommitingContainer/Panel/MarginContainer/ScrollContainer" unique_id=65716582]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="CommitSettingsContainer" type="VBoxContainer" parent="." unique_id=118643461]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 50
+
+[node name="ActionsContainer" type="HBoxContainer" parent="CommitSettingsContainer" unique_id=1455310302]
+layout_mode = 2
+alignment = 2
+
+[node name="CancelCommitButton" type="Button" parent="CommitSettingsContainer/ActionsContainer" unique_id=1749807520]
+layout_mode = 2
+text = "Cancel"
+
+[node name="CommitNameSectionContainer" type="VBoxContainer" parent="CommitSettingsContainer" unique_id=517268826]
+layout_mode = 2
+alignment = 2
+
+[node name="Form" type="HBoxContainer" parent="CommitSettingsContainer/CommitNameSectionContainer" unique_id=543072958]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CommitNameLabel" type="Label" parent="CommitSettingsContainer/CommitNameSectionContainer/Form" unique_id=1479568625]
+layout_mode = 2
+text = "Commit name:"
+
+[node name="CommitNameLineEdit" type="LineEdit" parent="CommitSettingsContainer/CommitNameSectionContainer/Form" unique_id=1264930129]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UseCommitGenericNameButton" type="Button" parent="CommitSettingsContainer/CommitNameSectionContainer" unique_id=942313533]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Use generic name"
+
+[node name="CommitButton" type="Button" parent="CommitSettingsContainer" unique_id=765842637]
+layout_mode = 2
+disabled = true
+text = "Commit"
+
+[node name="GGC_ExecuteShell" parent="." unique_id=1546650804 instance=ExtResource("3_4d34w")]
+
+[connection signal="pressed" from="FilesContainer/StageFileContainer/TopArea/AddAllFilesToStageButton" to="." method="_on_add_all_files_to_stage_button_pressed"]
+[connection signal="pressed" from="FilesContainer/FilesCommitingContainer/TopArea/ClearFilesToStageButton" to="." method="_on_clear_files_to_stage_button_pressed"]
+[connection signal="pressed" from="CommitSettingsContainer/ActionsContainer/CancelCommitButton" to="." method="_on_cancel_commit_button_pressed"]
+[connection signal="text_changed" from="CommitSettingsContainer/CommitNameSectionContainer/Form/CommitNameLineEdit" to="." method="_on_commit_name_line_edit_text_changed"]
+[connection signal="pressed" from="CommitSettingsContainer/CommitNameSectionContainer/UseCommitGenericNameButton" to="." method="_on_use_commit_generic_name_button_pressed"]
+[connection signal="pressed" from="CommitSettingsContainer/CommitButton" to="." method="_on_commit_bis_button_pressed"]
+[connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

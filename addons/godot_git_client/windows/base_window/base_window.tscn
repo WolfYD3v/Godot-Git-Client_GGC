@@ -80,7 +80,8 @@ theme_override_constants/separation = -3
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="VBoxContainer/TopBar" unique_id=1276506545]
+[node name="Background" type="Panel" parent="VBoxContainer/TopBar" unique_id=1120400215]
+modulate = Color(0, 0.8842967, 0.8080763, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
