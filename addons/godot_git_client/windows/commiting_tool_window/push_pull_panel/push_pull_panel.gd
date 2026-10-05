@@ -104,6 +104,7 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 
 func _on_close_button_pressed() -> void:
 	close_panel()
+	# COMMENT TO DELETE LATER (FOR TEST SAKE ONLY)
 
 func _on_remote_selector_option_button_item_selected(index: int) -> void:
 	current_remote_selected = remote_selector_option_button.get_item_text(index)
