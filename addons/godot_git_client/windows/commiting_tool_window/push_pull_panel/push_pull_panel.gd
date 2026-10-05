@@ -70,6 +70,12 @@ func fire_pull_command() -> void:
 	])
 	#ggc_execute_shell.execute("git", ["pull", current_remote_selected, current_branch_selected])
 
+func close_panel() -> void:
+	if ggc_commiting_tool_window: ggc_commiting_tool_window.toggle_panel(
+		ggc_commiting_tool_window.PANELS.MAIN
+	)
+	force_check_button.button_pressed = false
+
 
 
 func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteSheelOutput) -> void:
@@ -87,16 +93,17 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 			var real_branches_array: PackedStringArray = []
 			for _branch: String in temp_branches_array: real_branches_array.append(_branch.right(-2))
 			init_option_button.call_deferred(branch_selector_option_button, real_branches_array)
-		"git push": update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
-		"git pull": update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
+		"git push":
+			update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
+			close_panel()
+		"git pull":
+			update_ggc_commiting_tool_window_terminal(ggc_execute_sheel_output.output[0])
+			close_panel()
 		_: pass
 
 
 func _on_close_button_pressed() -> void:
-	if ggc_commiting_tool_window: ggc_commiting_tool_window.toggle_panel(
-		ggc_commiting_tool_window.PANELS.MAIN
-	)
-	force_check_button.button_pressed = false
+	close_panel()
 
 func _on_remote_selector_option_button_item_selected(index: int) -> void:
 	print(index)
