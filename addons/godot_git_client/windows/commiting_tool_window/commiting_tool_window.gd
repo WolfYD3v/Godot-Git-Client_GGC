@@ -6,6 +6,7 @@ enum PANELS {
 	MAIN,
 	COMMIT,
 	PUSH_PULL,
+	MERGE,
 }
 
 @onready var ggc_execute_shell: GGC_Execute_Shell = $GGC_ExecuteShell
@@ -15,6 +16,7 @@ enum PANELS {
 @onready var overlayere: ColorRect = $VBoxContainer/Interface/Overlayere
 @onready var push_pull_panel: GGC_PushPullPanel = $VBoxContainer/Interface/MarginContainer/PushPullPanel
 @onready var close_button: Button = $VBoxContainer/TopBar/MarginContainer/NODES/CloseButton
+@onready var merge_panel: GGC_MergePanel = $VBoxContainer/Interface/MarginContainer/MergePanel
 
 @export var logging: bool = true
 
@@ -26,6 +28,7 @@ func _ready() -> void:
 	var action_close = close
 	commit_panel.ggc_commiting_tool_window = self
 	push_pull_panel.ggc_commiting_tool_window = self
+	merge_panel.ggc_commiting_tool_window = self
 	overlayere.hide()
 	toggle_panel(PANELS.MAIN)
 	
@@ -68,6 +71,7 @@ func toggle_panel(panel: PANELS) -> void:
 	main.visible = panel == PANELS.MAIN
 	commit_panel.visible = panel == PANELS.COMMIT
 	push_pull_panel.visible = panel == PANELS.PUSH_PULL
+	merge_panel.visible = panel == PANELS.MERGE
 
 
 
@@ -112,4 +116,5 @@ func _on_overlayere_visibility_changed() -> void:
 
 
 func _on_merge_button_pressed() -> void:
-	pass # Replace with function body.
+	toggle_panel(PANELS.MERGE)
+	merge_panel.setup()

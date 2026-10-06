@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtp1bgapce7dw" path="res://addons/godot_git_client/windows/commiting_tool_window/commit_panel/commit_panel.tscn" id="3_1houl"]
 [ext_resource type="PackedScene" uid="uid://v6peymx7568l" path="res://addons/godot_git_client/execute_shell/ggc_execute_shell.tscn" id="3_74rc7"]
 [ext_resource type="PackedScene" uid="uid://b0xk3cnaegrl8" path="res://addons/godot_git_client/windows/commiting_tool_window/push_pull_panel/push_pull_panel.tscn" id="4_t3cx6"]
+[ext_resource type="PackedScene" uid="uid://30yrpedvm5v7" path="res://addons/godot_git_client/windows/commiting_tool_window/merge_panel/merge_panel.tscn" id="5_yl1kd"]
 
 [node name="GGC_CommitingToolWindow" unique_id=1170723533 instance=ExtResource("1_rf00j")]
 script = ExtResource("2_pdglw")
@@ -102,6 +103,10 @@ visible = false
 layout_mode = 2
 
 [node name="PushPullPanel" parent="VBoxContainer/Interface/MarginContainer" parent_id_path=PackedInt32Array(1145247039) index="2" unique_id=1117890103 instance=ExtResource("4_t3cx6")]
+visible = false
+layout_mode = 2
+
+[node name="MergePanel" parent="VBoxContainer/Interface/MarginContainer" parent_id_path=PackedInt32Array(1145247039) index="3" unique_id=291089465 instance=ExtResource("5_yl1kd")]
 visible = false
 layout_mode = 2
 

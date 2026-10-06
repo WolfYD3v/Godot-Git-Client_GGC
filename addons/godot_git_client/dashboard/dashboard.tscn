@@ -32,19 +32,12 @@ grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="Background" unique_id=784594674]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2757.0
-offset_top = -2846.0
-offset_right = -1605.0
-offset_bottom = -2198.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -197.0
+offset_top = -349.00003
+offset_right = 277.0
+offset_bottom = -53.00003
 scale = Vector2(3, 5)
 texture = ExtResource("3_0y6gp")
-expand_mode = 1
-stretch_mode = 3
 
 [node name="BackgroundCover" type="ColorRect" parent="Background" unique_id=2129429594]
 layout_mode = 1
