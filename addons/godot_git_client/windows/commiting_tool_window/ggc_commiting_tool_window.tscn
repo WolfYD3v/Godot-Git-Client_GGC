@@ -93,6 +93,10 @@ text = "Push"
 layout_mode = 2
 text = "Pull"
 
+[node name="MergeButton" type="Button" parent="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons" index="6" unique_id=814610411]
+layout_mode = 2
+text = "Merge"
+
 [node name="CommitPanel" parent="VBoxContainer/Interface/MarginContainer" parent_id_path=PackedInt32Array(1145247039) index="1" unique_id=1855035391 instance=ExtResource("3_1houl")]
 visible = false
 layout_mode = 2
@@ -120,5 +124,6 @@ color = Color(0, 0, 0, 0.5882353)
 [connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/RestoreButton" to="." method="_on_restore_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/PushButton" to="." method="_on_push_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/PullButton" to="." method="_on_pull_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Interface/MarginContainer/Main/ButtonsMarginContainer/Buttons/MergeButton" to="." method="_on_merge_button_pressed"]
 [connection signal="visibility_changed" from="VBoxContainer/Interface/Overlayere" to="." method="_on_overlayere_visibility_changed"]
 [connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]

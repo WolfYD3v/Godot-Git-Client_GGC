@@ -2,6 +2,9 @@
 extends Control
 class_name GGC_BaseWindow
 
+signal popuped
+signal closed
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export_tool_button("POPUP", "Button") var action_popup = popup
@@ -24,6 +27,7 @@ func popup() -> void:
 	take_focus()
 	if animation_player.is_playing() or _opened: return
 	
+	popuped.emit()
 	show()
 	animation_player.play("popup")
 	_opened = true
@@ -31,6 +35,7 @@ func popup() -> void:
 func close() -> void:
 	if animation_player.is_playing(): return
 	
+	closed.emit()
 	animation_player.play("close")
 	await animation_player.animation_finished
 	_opened = false

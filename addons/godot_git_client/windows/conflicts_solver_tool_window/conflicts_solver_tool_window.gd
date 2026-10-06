@@ -13,7 +13,11 @@ func _ready() -> void:
 	super()
 	var action_popup = popup
 	var action_close = close
-	ggc_execute_shell.execute("git", ["ls-files", "-u"])
+	popuped.connect(
+		func():
+			ggc_execute_shell.execute("git", ["ls-files", "-u"])
+			set_save_file_button_clickability()
+	)
 	
 	conflicted_files_code_edit.text_set.connect(set_save_file_button_clickability)
 	conflicted_files_code_edit.text_changed.connect(set_save_file_button_clickability)
@@ -56,12 +60,10 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 	match ggc_execute_sheel_output.action:
 		"git lsfiles":
 			var temp_conflicted_files_array: PackedStringArray = cmd_output_to_array(ggc_execute_sheel_output.output[0])
-			print(temp_conflicted_files_array)
 			var real_conflicted_files_array: PackedStringArray = []
 			for file: String in temp_conflicted_files_array:
-				var e = file.split(" ")[2].split("\t")[1]
-				if not e in real_conflicted_files_array: real_conflicted_files_array.append(e)
-			print(real_conflicted_files_array)
+				var file_name: String = file.split(" ")[2].split("\t")[1]
+				if not file_name in real_conflicted_files_array: real_conflicted_files_array.append(file_name)
 			fill_files_list(real_conflicted_files_array)
 		_: pass
 
