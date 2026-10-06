@@ -7,14 +7,15 @@ class_name GGC_Dashboard
 @onready var errors_count_label: Label = %ErrorsCountLabel
 @onready var ggc_logs_menu: GGC_LogsMenu = %GGC_LogsMenu
 @onready var ggc_branches_menu: GGC_BranchesMenu = %GGC_BranchesMenu
-
 @onready var ggc_commiting_tool_window: GGC_CommitingToolWindow = $WindowsContainer/GGC_CommitingToolWindow
 @onready var ggc_remote_tool_window: GGC_BaseWindow = $WindowsContainer/GGC_RemoteToolWindow
+@onready var ggc_conflicts_solver_tool_window: GGC_ConflictsSolverToolWindow = $WindowsContainer/GGC_ConflictsSolverToolWindow
 
 func _ready() -> void:
 	ggc_error_window.dashboard = self
 	ggc_commiting_tool_window.dashboard = self
 	ggc_branches_menu.dashboard = self
+	ggc_conflicts_solver_tool_window.dashboard = self
 	fire_git_branch_command()
 
 
@@ -43,3 +44,6 @@ func _on_commiting_tool_button_pressed() -> void:
 
 func _on_remote_tool_button_pressed() -> void:
 	ggc_remote_tool_window.popup()
+
+func _on_conflict_solver_tool_button_pressed() -> void:
+	ggc_conflicts_solver_tool_window.popup()

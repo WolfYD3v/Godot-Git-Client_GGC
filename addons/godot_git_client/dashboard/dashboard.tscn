@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c2x6vtt8dfrkj" path="res://addons/godot_git_client/windows/error_window/error_window.tscn" id="5_ktsl0"]
 [ext_resource type="PackedScene" uid="uid://c82xe4hu02l2e" path="res://addons/godot_git_client/windows/commiting_tool_window/ggc_commiting_tool_window.tscn" id="6_8rbxu"]
 [ext_resource type="PackedScene" uid="uid://jw0ty5ajqvo6" path="res://addons/godot_git_client/windows/remote_tool_window/ggc_remote_tool_window.tscn" id="7_1netg"]
+[ext_resource type="PackedScene" uid="uid://dkrpsow86h6og" path="res://addons/godot_git_client/windows/conflicts_solver_tool_window/conflicts_solver_tool_window.tscn" id="9_35lbw"]
 
 [node name="GGC_Dashboard" type="Control" unique_id=1792440517]
 layout_mode = 3
@@ -156,6 +157,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "⤮"
 
+[node name="ConflictSolverToolButton" type="Button" parent="MarginContainer/GridContainer" unique_id=955330409]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "﨏 "
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2102988565]
 layout_mode = 1
 anchors_preset = 15
@@ -190,6 +197,10 @@ mouse_filter = 2
 visible = false
 layout_mode = 1
 
+[node name="GGC_RemoteToolWindow" parent="WindowsContainer" unique_id=575061541 instance=ExtResource("7_1netg")]
+visible = false
+layout_mode = 1
+
 [node name="GGC_CommitingToolWindow" parent="WindowsContainer" unique_id=979782132 instance=ExtResource("6_8rbxu")]
 visible = false
 custom_minimum_size = Vector2(960, 540)
@@ -204,7 +215,7 @@ offset_top = -270.0
 offset_right = 480.0
 offset_bottom = 270.0
 
-[node name="GGC_RemoteToolWindow" parent="WindowsContainer" unique_id=575061541 instance=ExtResource("7_1netg")]
+[node name="GGC_ConflictsSolverToolWindow" parent="WindowsContainer" unique_id=833138525 instance=ExtResource("9_35lbw")]
 visible = false
 layout_mode = 1
 
@@ -213,6 +224,7 @@ layout_mode = 1
 [connection signal="pressed" from="MarginContainer/GridContainer/ErrorsButton" to="." method="_on_errors_button_pressed"]
 [connection signal="pressed" from="MarginContainer/GridContainer/CommitingToolButton" to="." method="_on_commiting_tool_button_pressed"]
 [connection signal="pressed" from="MarginContainer/GridContainer/RemoteToolButton" to="." method="_on_remote_tool_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/ConflictSolverToolButton" to="." method="_on_conflict_solver_tool_button_pressed"]
 [connection signal="gui_input" from="WindowsContainer/GGC_ErrorWindow" to="WindowsContainer/GGC_ErrorWindow" method="_on_gui_input"]
 [connection signal="gui_input" from="WindowsContainer/GGC_CommitingToolWindow" to="WindowsContainer/GGC_CommitingToolWindow" method="_on_gui_input"]
 [connection signal="execution_done" from="GGC_ExecuteShell" to="." method="_on_ggc_execute_shell_execution_done"]
