@@ -35,7 +35,7 @@ func fill_files_list(files: PackedStringArray) -> void:
 		var button: Button = Button.new()
 		button.text = file.get_file()
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		button.pressed.connect(set_conflicted_file_code_edit.bind("res://addons/godot_git_client/windows/conflicts_solver_tool_window/%s" % file))
+		button.pressed.connect(set_conflicted_file_code_edit.bind(file))
 		files_list.add_child(button)
 
 func set_conflicted_file_code_edit(file_path: String) -> void:
@@ -57,7 +57,12 @@ func _on_ggc_execute_shell_execution_done(ggc_execute_sheel_output: GGC_ExecuteS
 		"git lsfiles":
 			var temp_conflicted_files_array: PackedStringArray = cmd_output_to_array(ggc_execute_sheel_output.output[0])
 			print(temp_conflicted_files_array)
-			fill_files_list(temp_conflicted_files_array)
+			var real_conflicted_files_array: PackedStringArray = []
+			for file: String in temp_conflicted_files_array:
+				var e = file.split(" ")[2].split("\t")[1]
+				if not e in real_conflicted_files_array: real_conflicted_files_array.append(e)
+			print(real_conflicted_files_array)
+			fill_files_list(real_conflicted_files_array)
 		_: pass
 
 
