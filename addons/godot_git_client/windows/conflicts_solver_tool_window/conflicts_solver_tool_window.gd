@@ -31,7 +31,6 @@ func try_clear_files_list() -> void:
 func fill_files_list(files: PackedStringArray) -> void:
 	try_clear_files_list()
 	
-	files = PackedStringArray(DirAccess.get_files_at("res://addons/godot_git_client/windows/conflicts_solver_tool_window/"))
 	for file: String in files:
 		var button: Button = Button.new()
 		button.text = file.get_file()
