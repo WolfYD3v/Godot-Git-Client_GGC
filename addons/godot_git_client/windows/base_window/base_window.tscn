@@ -74,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -3
+theme_override_constants/separation = -5
 
 [node name="TopBar" type="Control" parent="VBoxContainer" unique_id=1272426311]
 custom_minimum_size = Vector2(0, 35)
