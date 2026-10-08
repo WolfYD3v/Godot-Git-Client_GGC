@@ -3,9 +3,9 @@ extends EditorPlugin
 
 var ggc_window: Window = null
 var ggc_action_name: String = "Godot Git Client"
-var ggc_dashboard: GGC_Dashboard = preload(
+var ggc_dashboard_packed_scene: PackedScene = preload(
 	"res://addons/godot_git_client/dashboard/dashboard.tscn"
-).instantiate()
+)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -29,7 +29,7 @@ func _open_ggc_window() -> void:
 	EditorInterface.get_base_control().add_child(ggc_window)
 	
 	# Load the interface
-	ggc_window.add_child(ggc_dashboard)
+	ggc_window.add_child(ggc_dashboard_packed_scene.instantiate())
 	
 	# To close the window without issues
 	ggc_window.close_requested.connect(

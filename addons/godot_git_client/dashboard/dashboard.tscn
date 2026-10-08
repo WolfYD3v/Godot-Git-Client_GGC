@@ -190,10 +190,6 @@ mouse_filter = 2
 visible = false
 layout_mode = 1
 
-[node name="GGC_RemoteToolWindow" parent="WindowsContainer" unique_id=575061541 instance=ExtResource("7_1netg")]
-visible = false
-layout_mode = 1
-
 [node name="GGC_CommitingToolWindow" parent="WindowsContainer" unique_id=979782132 instance=ExtResource("6_8rbxu")]
 visible = false
 custom_minimum_size = Vector2(960, 540)
@@ -209,6 +205,10 @@ offset_right = 480.0
 offset_bottom = 270.0
 
 [node name="GGC_ConflictsSolverToolWindow" parent="WindowsContainer" unique_id=833138525 instance=ExtResource("9_35lbw")]
+visible = false
+layout_mode = 1
+
+[node name="GGC_RemoteToolWindow" parent="WindowsContainer" unique_id=575061541 instance=ExtResource("7_1netg")]
 visible = false
 layout_mode = 1
 
